@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Boards</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div id="header">
+            {% block header %}
+                app
+            {% endblock %}
+        </div>
+        <div id="main">
+            {% block main %}
+            {% endblock %}
+        </div>
+        <div id="left-area">
+            {% block left-area %}
+            {% endblock %}
+        </div>
+        <div id="right-area-upper">
+            {% block right-area-upper %}
+            {% endblock %}
+        </div>
+        <div id="right-area-lower">
+            {% block right-area-lower %}
+            {% endblock %}
+        </div>
+        <div id="footer">
+        </div>
+
+
+
+    </body>
+</html>
