@@ -6,6 +6,12 @@
 
 {% block main %}
     <div id="main">
+        {% for recipe in recipes %}
+            <a href="abd.html" class="item">
+                <div class="title">{{recipe.recipe_name}}</div>
+                <img class="image" src="{{ recipe.image.url }}">
+            </a>
+        {% endfor %}
         <a href="abd.html" class="item">
             <div class="title">oppskrift 1</div>
             <img class="image" src="https://i.redd.it/yfu0hzb05yd61.jpg">

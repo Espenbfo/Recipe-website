@@ -10,7 +10,7 @@ class IngredientType(models.Model):
 
 class Recipe(models.Model):
     recipe_name = models.CharField(max_length=127)
-    image = models.ImageField()
+    image = models.ImageField(upload_to='static/img/')
 
 class Ingredient(models.Model):
     ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE)

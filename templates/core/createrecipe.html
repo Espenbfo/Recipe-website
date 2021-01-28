@@ -6,7 +6,7 @@
 
 {% block main %}
 <div id="split-view">
-    <form id="create-form" method="post">
+    <form id="create-form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h3>Create Recipe</h3>
         <input type="number" name="number-of-ingredients" id="number-of-ingredients" class="hidden" value="0">
