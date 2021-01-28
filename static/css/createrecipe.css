@@ -14,3 +14,48 @@
 #create-form .input-container * {
     margin-bottom: 8px;
 }
+
+.hidden {
+    display: none;
+}
+
+#split-view {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-areas: ". form ingredients .";
+}
+
+#split-view #create-form {
+    grid-area: form;
+}
+
+#split-view #ingredients {
+    grid-area: ingredients;
+}
+
+#IngredientName {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#ingredient-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#ingredient-list button {
+    background-color: #fff1f1;
+    border: 1px solid #e2d5d5;
+    margin-bottom: 4px;
+    padding: 2px;
+}
+#ingredient-list button:hover {
+    background-color: #fffafa;
+}
+#ingredient-list button:active {
+    background-color: #ffe6e6;
+}
+
+#ingredient-used {
+    display: flex;
+    flex-direction: column;
+}

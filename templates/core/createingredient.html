@@ -5,12 +5,14 @@
 {% endblock %}
 
 {% block main %}
-<form id="create-form" method="post">
-    {% csrf_token %}
-    <h3>Add ingredient</h3>
-    <div class="input-container">
-        {{ form }}
-        <button type="submit">submit</button>
-    </div>
-</form>
+
+        <form id="create-form" method="post">
+            {% csrf_token %}
+            <h3>Add ingredient</h3>
+            <div class="input-container">
+                {{ form }}
+                <button type="submit">submit</button>
+            </div>
+        </form>
+
 {% endblock %}

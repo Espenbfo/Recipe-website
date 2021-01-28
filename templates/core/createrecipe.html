@@ -5,19 +5,33 @@
 {% endblock %}
 
 {% block main %}
-<form id="create-form" method="post">
-    {% csrf_token %}
-    <h3>Add ingredient</h3>
-    <div class="input-container">
-        {{ form }}
+<div id="split-view">
+    <form id="create-form" method="post">
+        {% csrf_token %}
+        <h3>Create Recipe</h3>
+        <input type="number" name="number-of-ingredients" id="number-of-ingredients" class="hidden" value="0">
+        <div class="input-container">
+            {{ form }}
+            <div id="ingredient-used"></div>
+            <button type="submit">submit</button>
+        </div>
+    </form>
+    <div id="ingredients">
+        <div class="hidden">
             {% for ingredient in ingredients %}
-                {{ ingredient.name }}
-                <input type="text" name="{{ ingredient.name }}">
+                {{ ingredient.ingredient_name }}
+                <input type="text" name="{{ ingredient.ingredient_name }}">
                 {{ ingredient.unit_type }} <br>
-        {% endfor %}
-        <button type="submit">submit</button>
+            {% endfor %}
+        </div>
+        <input type="text" id="IngredientName" onchange="onIngredientChange()">
+        <div id="ingredient-list">
+            {% for ingredient in ingredients %}
+                <button onclick="moveItem('{{ ingredient.ingredient_name }}')">{{ ingredient.ingredient_name }}</button>
+            {% endfor %}
+        </div>
     </div>
-</form>
+</div>
     {% load static %}
     <script type="text/javascript" src=" {% static "js/script.js" %}"></script>
 {% endblock %}
