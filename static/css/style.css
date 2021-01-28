@@ -104,8 +104,9 @@ body {
 
 #main .item .title{
     grid-area: title;
-    color: #685252;
+    color: #000000;
     text-transform: uppercase;
+    text-decoration: none;
 }
 #main .item .image{
     border-top-left-radius: 10px;
