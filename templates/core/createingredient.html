@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block main %}
-<input id="create-form">
-    <label for="ingredientname">name of ingredient:</label>
-    <input id="ingredientname" type="text">
-    <input id = "ingredientvalue" type="number">
-    <input id = "ingredientunit" type="text">
+<form id="create-form" method="post">
+    <h3>Add ingredient</h3>
+    <div class="input-container">
+        {{ form }}
+        <button type="submit">submit</button>
+    </div>
 </form>
 {% endblock %}
