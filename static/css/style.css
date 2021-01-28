@@ -78,3 +78,37 @@ body {
 #sidebar .item:active {
     background-color: #eadfdf;
 }
+
+#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 3px
+}
+
+#main .item {
+    width: 200px;
+    background-color: #fff9f9;
+    height: 220px;
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20px auto;
+    grid-template-areas:
+    "title"
+    "image";
+    border-radius: 4px;
+}
+
+#main .item .title{
+    grid-area: title;
+    color: #685252;
+    text-transform: uppercase;
+}
+#main .item .image{
+    grid-area: image;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
