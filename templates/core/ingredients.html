@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/ingredients.css" %}">
+{% endblock %}
+
 {% block main %}
     <div id="ingredient-main">
         {% for ingredient in ingredients %}

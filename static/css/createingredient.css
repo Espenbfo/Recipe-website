@@ -1,0 +1,16 @@
+
+
+#create-form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 100%;
+}
+
+#create-form .input-container {
+    width: 300px;
+    align-self: center;
+}
+#create-form .input-container * {
+    margin-bottom: 8px;
+}

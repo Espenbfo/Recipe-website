@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/createrecipe.css" %}">
+{% endblock %}
+
 {% block main %}
 <form id="create-form" method="post">
     {% csrf_token %}

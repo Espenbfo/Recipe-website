@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/recipes.css" %}">
+{% endblock %}
+
 {% block main %}
     <div id="main">
         <a href="abd.html" class="item">

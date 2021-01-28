@@ -1,0 +1,28 @@
+#ingredient-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 3px
+}
+
+#ingredient-main .item {
+    width: 200px;
+    background-color: #ffffff;
+    height: 220px;
+    margin: 5px;
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px;
+    grid-template-areas:
+    "title";
+    border-radius: 10px;
+}
+
+#ingredient-main .item .title{
+    grid-area: title;
+    color: #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+}

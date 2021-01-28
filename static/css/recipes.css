@@ -1,0 +1,43 @@
+
+#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 3px
+}
+
+#main .item {
+    width: 200px;
+    background-color: #ffffff;
+    height: 220px;
+    margin: 5px;
+    margin-top: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 40px;
+    grid-template-areas:
+    "image"
+    "title";
+    border-radius: 10px;
+}
+
+#main .item .title{
+    grid-area: title;
+    color: #000000;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+#main .item .image{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition-duration: 0.2s;
+    grid-area: image;
+    width: 200px;
+    height: 100%;
+    opacity: 0.9;
+}
+#main .item .image:hover {
+    transition-duration: 0.2s;
+    opacity: 1.0;
+}
