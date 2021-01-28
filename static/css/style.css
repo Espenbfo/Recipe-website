@@ -68,4 +68,13 @@ body {
     height: 40px;
     color: #685252;
     line-height: 40px;
+    text-transform: uppercase;
+}
+
+#sidebar .item:hover {
+    background-color: #ffffff;
+}
+
+#sidebar .item:active {
+    background-color: #eadfdf;
 }
