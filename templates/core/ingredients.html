@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block main %}
+    <div id="ingredient-main">
+        {% for ingredient in ingredients %}
+            <a href="abd.html" class="item">
+                <div class="title"> {{ ingredient.name }}</div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

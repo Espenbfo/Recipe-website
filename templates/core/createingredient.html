@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 <form id="create-form" method="post">
+    {% csrf_token %}
     <h3>Add ingredient</h3>
     <div class="input-container">
         {{ form }}

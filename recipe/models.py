@@ -1,11 +1,15 @@
 from django.db import models
 from django.forms import ModelForm
 
-class Ingredient(models.Model):
+
+
+class IngredientType(models.Model):
     name = models.CharField(max_length=127)
-    value = models.FloatField()
     unit_type = models.CharField(max_length=32)
 
+class Ingredient(models.Model):
+    ingredient_type = models.ForeignKey(IngredientType, on_delete=models.CASCADE)
+    value = models.FloatField()
 
 class Recipe(models.Model):
     name = models.CharField(max_length=127)
@@ -15,5 +19,5 @@ class Recipe(models.Model):
 
 class IngredientForm(ModelForm):
     class Meta:
-        model = Ingredient
-        fields = ['name', 'value', 'unit_type']
+        model = IngredientType
+        fields = ['name', 'unit_type']
