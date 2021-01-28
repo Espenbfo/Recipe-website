@@ -18,6 +18,6 @@ from django.urls import path
 from recipe.views import index
 
 urlpatterns = [
-    path('hei', index, name="index"),
+    path('', index, name="index"),
     path('admin/', admin.site.urls),
 ]

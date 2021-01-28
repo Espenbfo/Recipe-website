@@ -52,3 +52,20 @@ body {
     background-color: #c6c6c6;
     text-align: center;
 }
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-items: center;
+}
+
+#sidebar .item {
+    margin-bottom: 5px;
+    background-color: #fff1f1;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    color: #685252;
+    line-height: 40px;
+}
