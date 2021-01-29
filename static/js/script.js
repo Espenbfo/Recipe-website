@@ -17,7 +17,7 @@ function onIngredientChange() {
 
 function moveItem(itemName, unitType) {
     "use strict";
-    var ingredientElement = document.createElement("TR");
+    var ingredientElement = document.createElement("DIV");
     ingredientElement.classList.add("ingredientElement");
 
     var ingredientUsed = document.getElementById("ingredient-used");
@@ -27,9 +27,12 @@ function moveItem(itemName, unitType) {
     var inputNumberField = document.createElement("INPUT");
     var unitTypeField = document.createElement("SPAN");
 
-    var tableName = document.createElement("TD");
-    var tableQuantity = document.createElement("TD");
-    var tableUnit = document.createElement("TD");
+    var tableName = document.createElement("DIV");
+    tableName.classList.add("item-1");
+    var tableQuantity = document.createElement("DIV");
+    tableQuantity.classList.add("item-2");
+    var tableUnit = document.createElement("DIV");
+    tableUnit.classList.add("item-3");
 
     unitTypeField.innerHTML = unitType;
 
