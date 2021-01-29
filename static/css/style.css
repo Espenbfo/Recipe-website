@@ -16,8 +16,10 @@ body {
 
 @media (max-width: 1000px) {
     body {
+        background-color: #fff1f1;
+        min-width: 400px;
         grid-template-columns: 4fr 6fr 6fr 4fr;
-        grid-template-rows: 100px 50px 1000px 100px;
+        grid-template-rows: 100px 50px auto 100px;
         grid-template-areas:
         "header header header header"
         "left-area left-area left-area left-area"
@@ -33,7 +35,13 @@ body {
         max-width: 200px;
         width: unset;
         margin-right: 10px;
+        font-size: 2vw!important;
     }
+
+    #header {
+
+        font-size: 8vw!important;
+}
 }
 #header {
     grid-area: header;
