@@ -1,7 +1,7 @@
 body {
     background-color: #fdfdfd;
     height:100%;
-    min-width: 1500px;
+    min-width: 1000px;
     display: grid;
     grid-template-columns: 3fr 4fr 6fr 6fr 4fr 3fr;
     grid-template-rows: 100px 50px 100px 600px 50px;
@@ -13,6 +13,28 @@ body {
     ". footer footer footer footer ."
 }
 
+
+@media (max-width: 1000px) {
+    body {
+        grid-template-columns: 4fr 6fr 6fr 4fr;
+        grid-template-rows: 100px 50px 1000px 100px;
+        grid-template-areas:
+        "header header header header"
+        "left-area left-area left-area left-area"
+        "main main main main"
+        "footer footer footer footer"
+    }
+    #sidebar {
+        flex-direction: row!important;
+        justify-content: space-evenly!important;
+    }
+
+    #sidebar .item {
+        max-width: 200px;
+        width: unset;
+        margin-right: 10px;
+    }
+}
 #header {
     grid-area: header;
 
