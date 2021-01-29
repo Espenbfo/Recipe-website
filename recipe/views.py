@@ -1,10 +1,9 @@
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.files.base import ContentFile
+from django.core.paginator import Paginator
 from random import randint
 from io import BytesIO
 
@@ -15,6 +14,14 @@ from .models import IngredientForm, IngredientType, Ingredient, Recipe, \
 
 def index(request):
     recipes = Recipe.objects.all()
+    page_number = 1
+    try:
+        page_number = request.GET.get('page')
+    except:
+        pass
+    print(page_number)
+    recipes = Paginator(recipes,12).get_page(page_number)
+
     return render(request, "core\\recipes.html", {"recipes": recipes})
 
 
@@ -23,6 +30,9 @@ def recipe(request, recipe_id):
     chosen_ingredients = Ingredient.objects.all().filter(recipe_id=recipe_id)
     ingredient_names = [IngredientType.objects.get(id=ing.ingredient_type_id)
                         for ing in chosen_ingredients]
+
+
+
     print(chosen_recipe.recipe_name)
     print(chosen_ingredients)
     return render(request, "core/recipe.html", {"recipe": chosen_recipe,
