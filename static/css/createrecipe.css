@@ -21,11 +21,11 @@
 
 #split-view {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 40px 2fr 1fr;
     grid-template-rows: 100px 1fr;
     grid-template-areas:
-            ". title title ."
-            ". form ingredients .";
+            ". title title title ."
+            ". left . right .";
 }
 
 #main .title {
@@ -36,27 +36,31 @@
     margin: auto;
 }
 
-#split-view #create-form {
-    grid-area: form;
+#split-view .left {
+    grid-area: left;
 }
 
-#split-view #ingredients {
-    grid-area: ingredients;
+#split-view .right {
+    grid-area: right;
 }
 
 #split-view #ingredients input {
-    width: 100%;
+    width: 95%;
 }
 
-#IngredientName {
-    margin-bottom: 20px;
-    margin-top: 20px;
+#ingredient-name {
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+#ingredients {
+    order: 1000000;
 }
 #ingredient-list {
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    height: 200px;
+    order: 1000;
+    background-color: #fdfdfd;
 }
 
 
@@ -81,7 +85,7 @@ textarea {
     flex-direction: column;
     border: solid 1px #ffdbdb;
     margin-bottom: 10px;
-    max-height: 200px;
+    max-height: 500px;
     overflow: auto;
 }
 

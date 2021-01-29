@@ -5,36 +5,39 @@
 {% endblock %}
 
 {% block main %}
-<div id="split-view">
-    <div class="title"> Create recipe</div>
-    <form id="create-form" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="number" name="number-of-ingredients" id="number-of-ingredients" class="hidden" value="0">
-        <div class="input-container">
-            {{ form }}
+<form id="create-form" method="post" enctype="multipart/form-data">
+    <div id="split-view">
+            <div class="title"> Create recipe</div>
+        <div class="left">
+            {% csrf_token %}
+            <input type="number" name="number-of-ingredients" id="number-of-ingredients" class="hidden" value="0">
+            <div class="input-container">
+                {{ form }}
+            </div>
+
+
+                <button type="submit">submit</button>
         </div>
-        <div id="ingredient-used">
-            <div class="ingredient-title">
-                <div class="item-1">Ingredient</div>
-                <div class="item-2">Quantity</div>
-                <div class="item-3">Unit</div>
+        <div class="right">
+            <div id="ingredient-used">
+                <div class="ingredient-title">
+                    <div class="item-1">Ingredient</div>
+                    <div class="item-2">Quantity</div>
+                    <div class="item-3">Unit</div>
+                </div>
+                <div id="ingredients">
+                    <div id="ingredient-list">
+                        <input type="text" id="ingredient-name" placeholder="search..." onInput="onIngredientChange()">
+                        {% for ingredient in ingredients %}
+                            <button class="choice" type="button" onclick="moveItem('{{ ingredient.ingredient_name }}',
+                                    '{{ ingredient.unit_type }}')">{{ ingredient.ingredient_name }}</button>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
-
-            <button type="submit">submit</button>
-
-    </form>
-    <div id="ingredients">
-        Ingredients
-        <input type="text" id="IngredientName" placeholder="search..." onInput="onIngredientChange()">
-        <div id="ingredient-list">
-            {% for ingredient in ingredients %}
-                <button onclick="moveItem('{{ ingredient.ingredient_name }}',
-                        '{{ ingredient.unit_type }}')">{{ ingredient.ingredient_name }}</button>
-            {% endfor %}
-        </div>
     </div>
-</div>
+</form>
     {% load static %}
     <script type="text/javascript" src=" {% static "js/script.js" %}"></script>
 {% endblock %}

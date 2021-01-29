@@ -2,14 +2,16 @@
 
 function onIngredientChange() {
     "use strict";
-    var search = document.getElementById("IngredientName").value;
+    var search = document.getElementById("ingredient-name").value;
     var ingredientList = document.getElementById("ingredient-list").children;
     for (var ingredient of ingredientList) {
-        if (ingredient.innerHTML.includes(search)) {
-            ingredient.classList.remove("hidden");
-        }
-        else {
-            ingredient.classList.add("hidden");
+        if (ingredient.classList.contains("choice")) {
+            if (ingredient.innerHTML.includes(search)) {
+                ingredient.classList.remove("hidden");
+            }
+            else {
+                ingredient.classList.add("hidden");
+            }
         }
     }
     //document.getElementById("demo").innerHTML = "You selected: " + x;
@@ -21,7 +23,7 @@ function moveItem(itemName, unitType) {
     ingredientElement.classList.add("ingredient-element");
 
     var ingredientUsed = document.getElementById("ingredient-used");
-    var childCount = ingredientUsed.childElementCount;
+    var childCount = ingredientUsed.childElementCount-1;
     document.getElementById("number-of-ingredients").value = childCount;
     var inputNameField = document.createElement("INPUT");
     var inputNumberField = document.createElement("INPUT");
