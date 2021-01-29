@@ -1,6 +1,17 @@
+/*jshint esversion: 6 */
+
 function onIngredientChange() {
     "use strict";
-    var x = document.getElementById("IngredientName").value;
+    var search = document.getElementById("IngredientName").value;
+    var ingredientList = document.getElementById("ingredient-list").children;
+    for (var ingredient of ingredientList) {
+        if (ingredient.innerHTML.includes(search)) {
+            ingredient.classList.remove("hidden");
+        }
+        else {
+            ingredient.classList.add("hidden");
+        }
+    }
     //document.getElementById("demo").innerHTML = "You selected: " + x;
 }
 

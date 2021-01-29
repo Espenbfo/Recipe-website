@@ -36,6 +36,7 @@
     width: 200px;
     height: 100%;
     opacity: 0.9;
+    object-fit: cover;
 }
 #main .item .image:hover {
     transition-duration: 0.2s;

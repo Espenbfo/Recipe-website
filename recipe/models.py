@@ -39,6 +39,3 @@ class RecipeForm(ModelForm):
     class Meta:
         model = Recipe
         fields = ['recipe_name', "recipe_description", 'image']
-        widgets = {
-            "recipe_description": forms.Textarea(attrs={"cols": 30, "rows": 20}),
-        }

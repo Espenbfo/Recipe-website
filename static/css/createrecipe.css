@@ -22,7 +22,15 @@
 #split-view {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr;
-    grid-template-areas: ". form ingredients .";
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+            ". title title ."
+            ". form ingredients .";
+}
+
+#main .title {
+    grid-area: title;
+    font-size: 2rem;
 }
 
 #split-view #create-form {
@@ -42,6 +50,9 @@
     flex-direction: column;
 }
 
+textarea {
+    max-width: 100%;
+}
 #ingredient-list button {
     background-color: #fff1f1;
     border: 1px solid #e2d5d5;

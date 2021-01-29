@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from PIL import Image
 from .models import IngredientForm, IngredientType, Ingredient, Recipe, \
     RecipeForm
 
@@ -60,6 +61,11 @@ def create_recipe(request):
         description = form["recipe_description"]
         print(request.FILES)
         image = request.FILES["image"]
+        try:
+            im = Image.open(image)
+            print(im.verify())
+        except Exception as e:
+            return HttpResponseRedirect("YOUCANTTRICKMEEEE")
         print(image)
         r = Recipe.objects.create(recipe_name=name,
                                   recipe_description=description, image=image)
