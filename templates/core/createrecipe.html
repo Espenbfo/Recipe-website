@@ -18,17 +18,11 @@
     </form>
     <div id="ingredients">
         Ingredients
-        <div class="hidden">
-            {% for ingredient in ingredients %}
-                {{ ingredient.ingredient_name }}
-                <input type="text" name="{{ ingredient.ingredient_name }}">
-                {{ ingredient.unit_type }} <br>
-            {% endfor %}
-        </div>
         <input type="text" id="IngredientName" placeholder="search..." onInput="onIngredientChange()">
         <div id="ingredient-list">
             {% for ingredient in ingredients %}
-                <button onclick="moveItem('{{ ingredient.ingredient_name }}')">{{ ingredient.ingredient_name }}</button>
+                <button onclick="moveItem('{{ ingredient.ingredient_name }}',
+                        '{{ ingredient.unit_type }}')">{{ ingredient.ingredient_name }}</button>
             {% endfor %}
         </div>
     </div>

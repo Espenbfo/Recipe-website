@@ -15,7 +15,7 @@ function onIngredientChange() {
     //document.getElementById("demo").innerHTML = "You selected: " + x;
 }
 
-function moveItem(itemName) {
+function moveItem(itemName, unitType) {
     "use strict";
     var ingredientElement = document.createElement("DIV");
     ingredientElement.classList.add("ingredientElement");
@@ -25,10 +25,12 @@ function moveItem(itemName) {
     document.getElementById("number-of-ingredients").value = childCount;
     var inputNameField = document.createElement("INPUT");
     var inputNumberField = document.createElement("INPUT");
+    var unitTypeField = document.createElement("SPAN");
 
+    unitTypeField.innerHTML = unitType;
 
     inputNameField.setAttribute("name", childCount+"name");
-    inputNameField.value = itemName
+    inputNameField.value = itemName;
 
     inputNameField.classList.add("hidden");
 
@@ -45,5 +47,6 @@ function moveItem(itemName) {
     ingredientElement.appendChild(label);
     ingredientElement.appendChild(inputNameField);
     ingredientElement.appendChild(inputNumberField);
+    ingredientElement.appendChild(unitTypeField);
     ingredientUsed.appendChild(ingredientElement);
 }

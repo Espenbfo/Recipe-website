@@ -88,7 +88,7 @@ def create_recipe(request):
     else:
         form = RecipeForm()
 
-    ingredients = IngredientType.objects.all()
+    ingredients = IngredientType.objects.order_by("ingredient_name")
     return render(request, "core\\createrecipe.html",
                   {"form": form,
                    "ingredients": ingredients})
