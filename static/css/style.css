@@ -17,6 +17,7 @@ body {
 @media (max-width: 1000px) {
     body {
         background-color: #fff1f1;
+        max-width: 100vw;
         min-width: 400px;
         grid-template-columns: 4fr 6fr 6fr 4fr;
         grid-template-rows: 100px 50px auto 100px;
