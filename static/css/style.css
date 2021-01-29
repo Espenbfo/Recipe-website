@@ -47,6 +47,12 @@ body {
 
         font-size: 8vw!important;
 }
+
+@media all and (max-width: 1500px) and (min-width: 1000px) {
+    body {
+        height: 125%!important;
+    }
+}
 }
 #header {
     grid-area: header;
