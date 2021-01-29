@@ -3,6 +3,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core.files.base import ContentFile
+from random import randint
+from io import BytesIO
+
 from PIL import Image
 from .models import IngredientForm, IngredientType, Ingredient, Recipe, \
     RecipeForm
@@ -64,11 +69,38 @@ def create_recipe(request):
         try:
             im = Image.open(image)
             print(im.verify())
+            im = Image.open(image)
+            width, height = im.size
+
+            max_size = 300
+            print(im.size)
+            width_greater = width >= height
+            print(width_greater)
+            if width_greater:
+                print(width,max_size)
+                if width > max_size:
+                    im = im.resize((max_size,int(height*max_size/width)))
+            else:
+                if height > max_size:
+                    im = im.resize((int(width * max_size / height), max_size))
+            print(im.size)
+            buffer = BytesIO()
+            im.save(fp=buffer, format="JPEG")
+            content_im = ContentFile(buffer.getvalue())
         except Exception as e:
+            print(e)
             return HttpResponseRedirect("YOUCANTTRICKMEEEE")
         print(image)
         r = Recipe.objects.create(recipe_name=name,
-                                  recipe_description=description, image=image)
+                                  recipe_description=description,
+                                  image=InMemoryUploadedFile(
+                                      content_im,
+                                      None,
+                                      str(randint(0,1000000000000))+ ".jpg",
+                                      "image/jpeg",
+                                      content_im.tell,
+                                      None
+                                  ))
         # with open("image.jpg", "w") as f:
         #    for chunk in image.chunks():
         #        f.write(image)
