@@ -20,13 +20,13 @@
     "image"
     "title";
     border-radius: 10px;
+    text-decoration: none;
 }
 
 #main .item .title{
     grid-area: title;
     color: #000000;
     text-transform: uppercase;
-    text-decoration: none;
 }
 #main .item .image{
     border-top-left-radius: 10px;
