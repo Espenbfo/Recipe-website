@@ -19,6 +19,12 @@ class Ingredient(models.Model):
     value = models.FloatField()
 
 class IngredientForm(ModelForm):
+    ingredient_name = forms.CharField(label="", max_length=127,
+                                         required=True, widget=forms.TextInput(
+            attrs={'placeholder': 'name'}))
+    unit_type = forms.CharField(label="", max_length=32,
+                                         required=True, widget=forms.TextInput(
+            attrs={'placeholder': 'unit'}))
     class Meta:
         model = IngredientType
         fields = ['ingredient_name', 'unit_type']
@@ -26,9 +32,9 @@ class IngredientForm(ModelForm):
 class RecipeForm(ModelForm):
     recipe_name = forms.CharField(label="", max_length=127,
                                          required=True, widget=forms.TextInput(
-            attrs={'placeholder': 'Tittel'}))
+            attrs={'placeholder': 'title'}))
     recipe_description = forms.CharField(label="", widget=forms.Textarea(
-        attrs={"placeholder": "beskrivelse"}
+        attrs={"placeholder": "recipe"}
     ))
     class Meta:
         model = Recipe
