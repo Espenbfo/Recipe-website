@@ -5,16 +5,29 @@
 {% endblock %}
 
 {% block main %}
-    <div>
-        oppskrift
+    <div class="title">
         {{ recipe.recipe_name }}
+    </div>
+    <div class="description">
         {{ recipe.recipe_description }}
+    </div>
+    <img class="image" src="{{ recipe.image.url }}">
+    <div class="ingredients-right">
         {% for ingredient in ingredients %}
-            {{ ingredient.value }} <br>
-        {% endfor %}
-        {% for ingredient_name in ingredient_names  %}
-            {{ ingredient_name.ingredient_name }}
-            {{ ingredient_name.unit_type }}
+            <div class="item">
+            {{ ingredient.value }}
+            <hr>
+            </div>
         {% endfor %}
     </div>
+    <div class="ingredients-left">
+        {% for ingredient_name in ingredient_names  %}
+            <div class="item">
+            {{ ingredient_name.ingredient_name }},
+            {{ ingredient_name.unit_type }}: 
+            <hr>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}

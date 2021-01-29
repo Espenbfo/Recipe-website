@@ -1,2 +1,44 @@
 #main {
+    display: grid;
+    grid-template-columns: 1fr 6fr 2fr 1fr 1fr;
+    grid-template-rows: 1fr 3fr 5fr;
+    grid-template-areas:
+    ". title title title ."
+    ". image ingredients-left ingredients-right ."
+    ". description description description ."
+    ;
+    width: 100%;
+    height: 100%;
+}
+
+#main .title {
+    grid-area: title;
+    font-size: 3rem;
+}
+
+#main .image {
+    grid-area: image;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#main .ingredients-left {
+    grid-area: ingredients-left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #fff2f1;
+}
+
+#main .ingredients-right {
+    grid-area: ingredients-right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff2f1;
+}
+
+#main .description {
+    grid-area: description;
+    padding: 10px;
 }
