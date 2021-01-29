@@ -79,7 +79,7 @@ textarea {
 #ingredient-used {
     display: flex;
     flex-direction: column;
-    border: solid 1px #685252;
+    border: solid 1px #ffdbdb;
     margin-bottom: 10px;
     max-height: 200px;
     overflow: auto;
@@ -92,36 +92,45 @@ textarea {
     text-transform: uppercase;
     color: #685252;
     border-bottom: 1px solid #685252;
+    padding: 5px;
 }
 
-.ingredientElement {
+.ingredient-element {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas: "item1 item2 item3";
-    margin-bottom: 0px;
-    border-bottom: 1px solid #685252;
+    margin-bottom: 2px;
+    border-bottom: 1px solid #ffd9d9;
+    background-color: #fff1f1;
 }
 
-#ingredient-used * input[type-number] {
-    -webkit-appearance: none;
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.ingredient-element:nth-child(even) {
+    background-color: #fdfdfd;
 }
 
 .item-1 {
     grid-area: item1;
-        margin-bottom: 0px;
 }
 
 .item-2 {
     grid-area: item2;
-        margin-bottom: 0px;
+}
+
+.ingredient-element .item-3{
+    text-align: left;
+    padding-left: 12px;
 }
 
 .item-3 {
     grid-area: item3;
-        margin-bottom: 0px;
 }
+
+
 
 .item-2 * {
     width: 100%;
-        margin-bottom: 0px;
 }

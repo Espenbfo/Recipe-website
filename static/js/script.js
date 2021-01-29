@@ -18,7 +18,7 @@ function onIngredientChange() {
 function moveItem(itemName, unitType) {
     "use strict";
     var ingredientElement = document.createElement("DIV");
-    ingredientElement.classList.add("ingredientElement");
+    ingredientElement.classList.add("ingredient-element");
 
     var ingredientUsed = document.getElementById("ingredient-used");
     var childCount = ingredientUsed.childElementCount;
