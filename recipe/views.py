@@ -40,7 +40,7 @@ def create_ingredient(request):
             unit_type = form.cleaned_data["unit_type"]
             IngredientType.objects.create(ingredient_name=name,
                                           unit_type=unit_type)
-            return HttpResponseRedirect("create")
+            return HttpResponseRedirect("createingredient")
     else:
         form = IngredientForm()
 

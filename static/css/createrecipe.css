@@ -41,6 +41,10 @@
     grid-area: ingredients;
 }
 
+#split-view #ingredients input {
+    width: 100%;
+}
+
 #IngredientName {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -48,7 +52,10 @@
 #ingredient-list {
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    height: 200px;
 }
+
 
 textarea {
     max-width: 100%;
