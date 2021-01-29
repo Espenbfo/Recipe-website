@@ -17,15 +17,19 @@ function onIngredientChange() {
 
 function moveItem(itemName, unitType) {
     "use strict";
-    var ingredientElement = document.createElement("DIV");
+    var ingredientElement = document.createElement("TR");
     ingredientElement.classList.add("ingredientElement");
 
     var ingredientUsed = document.getElementById("ingredient-used");
-    var childCount = ingredientUsed.childElementCount + 1;
+    var childCount = ingredientUsed.childElementCount;
     document.getElementById("number-of-ingredients").value = childCount;
     var inputNameField = document.createElement("INPUT");
     var inputNumberField = document.createElement("INPUT");
     var unitTypeField = document.createElement("SPAN");
+
+    var tableName = document.createElement("TD");
+    var tableQuantity = document.createElement("TD");
+    var tableUnit = document.createElement("TD");
 
     unitTypeField.innerHTML = unitType;
 
@@ -44,9 +48,12 @@ function moveItem(itemName, unitType) {
     label.setAttribute("for", childCount+"number");
     label.innerText = itemName;
 
-    ingredientElement.appendChild(label);
-    ingredientElement.appendChild(inputNameField);
-    ingredientElement.appendChild(inputNumberField);
-    ingredientElement.appendChild(unitTypeField);
+    ingredientElement.appendChild(tableName);
+    ingredientElement.appendChild(tableQuantity);
+    ingredientElement.appendChild(tableUnit);
+    tableName.appendChild(label);
+    tableName.appendChild(inputNameField);
+    tableQuantity.appendChild(inputNumberField);
+    tableUnit.appendChild(unitTypeField);
     ingredientUsed.appendChild(ingredientElement);
 }

@@ -77,3 +77,23 @@ textarea {
     display: flex;
     flex-direction: column;
 }
+
+table {
+    margin-top: 30px;
+    width: 100%;
+    display: table;
+        table-layout:fixed;
+
+}
+
+tbody {
+        overflow: auto;
+    max-height: 250px;
+}
+td {
+    width: 33%;
+    overflow: hidden;
+}
+
+tr {
+}
