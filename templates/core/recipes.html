@@ -8,7 +8,9 @@
     {% for recipe in recipes %}
         <a href="recipe/{{ recipe.id }}" class="item">
             <div class="title">{{recipe.recipe_name}}</div>
-            <img class="image" src="{{ recipe.image.url }}">
+            <div class="image">
+            <img src="{{ recipe.image.url }}">
+                </div>
         </a>
     {% endfor %}
 {% endblock %}
