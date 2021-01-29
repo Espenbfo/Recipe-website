@@ -7,7 +7,7 @@
 {% block main %}
     <div id="main">
         {% for recipe in recipes %}
-            <a href="abd.html" class="item">
+            <a href="recipe/{{ recipe.id }}" class="item">
                 <div class="title">{{recipe.recipe_name}}</div>
                 <img class="image" src="{{ recipe.image.url }}">
             </a>

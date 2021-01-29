@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/recipe.css" %}">
+{% endblock %}
+
+{% block main %}
+    <div>
+        oppskrift
+        {{ recipe.name }}
+        {% for ingredient in ingredients %}
+            {{ ingredient.ingredient_name }}
+            {{ ingredient.unit_type }} <br>
+        {% endfor %}
+    </div>
+{% endblock %}

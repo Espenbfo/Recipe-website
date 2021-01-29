@@ -12,6 +12,14 @@ def index(request):
     return render(request, "core\\recipes.html", {"recipes": recipes})
 
 
+def recipe(request, recipe_id):
+    chosen_recipe = Recipe.objects.get(id=recipe_id)
+    chosen_ingredients = Ingredient.objects.all().filter(recipe_id=recipe_id)
+    print(chosen_recipe.recipe_name)
+    print(chosen_ingredients)
+    return render(request, "core\\recipe.html", {"recipe": chosen_recipe, "ingredients": chosen_ingredients})
+
+
 def ingredients(request):
     ingredients = IngredientType.objects.all()
     return render(request, "core\\ingredients.html",
