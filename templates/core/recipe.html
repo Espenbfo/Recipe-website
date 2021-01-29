@@ -7,10 +7,14 @@
 {% block main %}
     <div>
         oppskrift
-        {{ recipe.name }}
+        {{ recipe.recipe_name }}
+        {{ recipe.recipe_description }}
         {% for ingredient in ingredients %}
-            {{ ingredient.ingredient_name }}
-            {{ ingredient.unit_type }} <br>
+            {{ ingredient.value }} <br>
+        {% endfor %}
+        {% for ingredient_name in ingredient_names  %}
+            {{ ingredient_name.ingredient_name }}
+            {{ ingredient_name.unit_type }}
         {% endfor %}
     </div>
 {% endblock %}
