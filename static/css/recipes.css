@@ -9,7 +9,7 @@
 
 #main .item {
     width: 23.5%;
-    background-color: #ffffff;
+    background-color: #fafafa;
     height: 220px;
     margin: 5px;
     margin-top: 0px;
@@ -22,20 +22,42 @@
     "title";
     border-radius: 10px;
     text-decoration: none;
+    transition-duration: 0.3s;
 }
 
+#main .item:hover {
+    transition-duration: 0.6s;
+    background-color: #ececec;
+}
 
 @media (max-width: 1500px) {
     #main .item {
         width: 30%;
     }
 }
+
+@media (max-width: 1000px) {
+    #main .item {
+        width: 48%!important;
+        height: 400px;
+        grid-template-rows: auto 100px;
+        font-size: 2rem;
+    }
+
+    #main .item .title{
+        line-height: 100px;
+    }
+}
+
 #main .item .title{
     grid-area: title;
     color: #000000;
-    text-transform: uppercase;
+    text-transform: capitalize;
     overflow: hidden;
+    line-height: 40px;
+    text-align: center;
     height: 100%;
+    font-family: sans-serif;
 }
 #main .item .image{
     border-top-left-radius: 10px;
@@ -44,12 +66,13 @@
     grid-area: image;
     min-width: 100%;
     min-height: 100%;
-    opacity: 0.9;
+    opacity: 1.0;
     overflow: hidden;
 }
 #main .item .image:hover {
     transition-duration: 0.2s;
-    opacity: 1.0;
+    filter: saturate(140%);
+    filter: contrast(120%);
     overflow: hidden;
 }
 
