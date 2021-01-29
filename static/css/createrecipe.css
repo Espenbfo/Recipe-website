@@ -30,7 +30,10 @@
 
 #main .title {
     grid-area: title;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    color: #685252;
+    text-transform: uppercase;
+    margin: auto;
 }
 
 #split-view #create-form {
@@ -95,5 +98,17 @@ td {
     overflow: hidden;
 }
 
+td * {
+    width: 100%;
+}
+th {
+    width: 33%;
+    overflow: hidden;
+    align-content: center;
+}
+
+th * {
+    width: 100%;
+}
 tr {
 }
