@@ -19,6 +19,7 @@ class Recipe(models.Model):
     image = models.ImageField(upload_to='static/img/')
     recipe_description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    portions = models.IntegerField()
 
 
 class Ingredient(models.Model):
@@ -43,13 +44,16 @@ class RecipeForm(ModelForm):
     recipe_name = forms.CharField(label="", max_length=127,
                                          required=True, widget=forms.TextInput(
             attrs={'placeholder': 'title'}))
+    portions = forms.IntegerField(label="",
+                                         required=True, widget=forms.NumberInput(
+            attrs={'placeholder': 'portions'}))
     recipe_description = forms.CharField(label="", widget=forms.Textarea(
         attrs={"placeholder": "recipe"}
     ))
 
     class Meta:
         model = Recipe
-        fields = ['recipe_name', "recipe_description", 'image']
+        fields = ['recipe_name', "portions", "recipe_description", 'image']
 
 
 class CategoryForm(ModelForm):
