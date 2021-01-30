@@ -6,7 +6,7 @@
 
 {% block main %}
     {% for category in categories %}
-        <a href="recipes/category/{{ category.id }}" class="item">
+        <a href="recipes/category/{{ category.id }}/1" class="item">
             <div class="title">{{category.category_name}}</div>
             <div class="image">
             <img src="{{ category.category_image.url }}">

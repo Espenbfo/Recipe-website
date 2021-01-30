@@ -14,3 +14,22 @@
         </a>
     {% endfor %}
 {% endblock %}
+
+{% block footer %}
+    page:
+    {% if recipes.has_previous %}
+        {% if recipes.previous_page_number != 1  %}
+            <a href="/1">1</a>
+            ...
+        {% endif %}
+        <a href="/{{ recipes.previous_page_number }}">{{ recipes.previous_page_number }}</a>
+    {% endif %}
+    {{ recipes.number }}
+    {% if recipes.has_next %}
+        {% if recipes.next_page_number != recipes.paginator.num_pages  %}
+            <a href="/{{ recipes.next_page_number }}">{{ recipes.next_page_number }}</a>
+            ...
+        {% endif %}
+        <a href="/{{ recipes.paginator.num_pages }}">{{ recipes.paginator.num_pages }}</a>
+    {% endif %}
+{% endblock %}

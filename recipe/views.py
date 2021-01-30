@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -52,6 +53,15 @@ def category_page(request, page):
     return render(request, "core\\categories.html", {"categories": categories})
 
 
+def recipes_category_page(request, category_id, page):
+    recipes = Recipe.objects.all().filter(category=category_id)
+    page_number = page
+    print(page_number)
+    categories = Paginator(recipes, 12).get_page(page_number)
+    print(categories)
+    return render(request, "core\\recipes.html", {"recipes": recipes})
+
+
 
 def index(request):
     recipes = Recipe.objects.all()
@@ -81,6 +91,7 @@ def ingredients(request):
                   {"ingredients": ingredients})
 
 
+@staff_member_required
 def create_ingredient(request):
     if request.method == "POST":
         form = IngredientForm(request.POST)
@@ -96,7 +107,7 @@ def create_ingredient(request):
 
     return render(request, "core\\createingredient.html", {"form": form})
 
-
+@staff_member_required
 def create_category(request):
     if request.method == "POST":
         form = request.POST
@@ -126,7 +137,7 @@ def handle_uploaded_file(f):
         for chunk in f.chunks():
             destination.write(chunk)
 
-
+@staff_member_required
 def create_recipe(request):
     if request.method == "POST":
         form = request.POST
