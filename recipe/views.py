@@ -9,31 +9,54 @@ from io import BytesIO
 
 from PIL import Image
 from .models import IngredientForm, IngredientType, Ingredient, Recipe, \
-    RecipeForm
+    RecipeForm, CategoryForm, Category
 
 
-def recipe_page(request,page):
+def resize_image(img):
+    im = Image.open(img)
+    print(im.verify())
+    im = Image.open(img)
+    width, height = im.size
+
+    max_size = 300
+    print(im.size)
+    width_greater = width >= height
+    print(width_greater)
+    if width_greater:
+        print(width, max_size)
+        if width > max_size:
+            im = im.resize((max_size, int(height * max_size / width)))
+    else:
+        if height > max_size:
+            im = im.resize((int(width * max_size / height), max_size))
+    print(im.size)
+    buffer = BytesIO()
+    im.save(fp=buffer, format="JPEG")
+    return ContentFile(buffer.getvalue())
+
+
+def recipe_page(request, page):
     recipes = Recipe.objects.all()
     page_number = page
     print(page_number)
-    recipes = Paginator(recipes,12).get_page(page_number)
+    recipes = Paginator(recipes, 12).get_page(page_number)
 
     return render(request, "core\\recipes.html", {"recipes": recipes})
+
 
 def index(request):
     recipes = Recipe.objects.all()
     page_number = 1
-    recipes = Paginator(recipes,12).get_page(page_number)
+    recipes = Paginator(recipes, 12).get_page(page_number)
 
     return render(request, "core\\recipes.html", {"recipes": recipes})
+
 
 def recipe(request, recipe_id):
     chosen_recipe = Recipe.objects.get(id=recipe_id)
     chosen_ingredients = Ingredient.objects.all().filter(recipe_id=recipe_id)
     ingredient_names = [IngredientType.objects.get(id=ing.ingredient_type_id)
                         for ing in chosen_ingredients]
-
-
 
     print(chosen_recipe.recipe_name)
     print(chosen_ingredients)
@@ -64,6 +87,30 @@ def create_ingredient(request):
     return render(request, "core\\createingredient.html", {"form": form})
 
 
+def create_category(request):
+    if request.method == "POST":
+        form = request.POST
+        print("hello")
+        name = form["category_name"].lower()
+        image = request.FILES["category_image"]
+        image = resize_image(image)
+        Category.objects.create(category_name=name,
+                                category_image=InMemoryUploadedFile(
+                                    image,
+                                    None,
+                                    str(randint(0,
+                                                1000000000000)) + ".jpg",
+                                    "image/jpeg",
+                                    image.tell,
+                                    None
+                                ))
+        return HttpResponseRedirect("createcategory")
+    else:
+        form = CategoryForm()
+
+    return render(request, "core\\createcategory.html", {"form": form})
+
+
 def handle_uploaded_file(f):
     with open('some/file/name.txt', 'wb+') as destination:
         for chunk in f.chunks():
@@ -89,9 +136,9 @@ def create_recipe(request):
             width_greater = width >= height
             print(width_greater)
             if width_greater:
-                print(width,max_size)
+                print(width, max_size)
                 if width > max_size:
-                    im = im.resize((max_size,int(height*max_size/width)))
+                    im = im.resize((max_size, int(height * max_size / width)))
             else:
                 if height > max_size:
                     im = im.resize((int(width * max_size / height), max_size))
@@ -108,7 +155,7 @@ def create_recipe(request):
                                   image=InMemoryUploadedFile(
                                       content_im,
                                       None,
-                                      str(randint(0,1000000000000))+ ".jpg",
+                                      str(randint(0, 1000000000000)) + ".jpg",
                                       "image/jpeg",
                                       content_im.tell,
                                       None

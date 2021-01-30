@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/createingredient.css" %}">
+{% endblock %}
+
+{% block main %}
+
+        <form id="create-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3>Add category</h3>
+            <div class="input-container">
+                {{ form }}
+                <button type="submit">submit</button>
+            </div>
+        </form>
+
+{% endblock %}
