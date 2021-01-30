@@ -53,8 +53,8 @@ def create_ingredient(request):
         form = IngredientForm(request.POST)
 
         if form.is_valid():
-            name = form.cleaned_data["ingredient_name"]
-            unit_type = form.cleaned_data["unit_type"]
+            name = form.cleaned_data["ingredient_name"].lower()
+            unit_type = form.cleaned_data["unit_type"].lower()
             IngredientType.objects.create(ingredient_name=name,
                                           unit_type=unit_type)
             return HttpResponseRedirect("createingredient")
