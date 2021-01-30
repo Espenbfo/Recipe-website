@@ -1,9 +1,10 @@
 #main {
     display: grid;
     grid-template-columns: 1fr 4fr 20px 6fr 1fr 1fr;
-    grid-template-rows: 1fr 3fr 5fr;
+    grid-template-rows: 60px 10px 200px 5fr;
     grid-template-areas:
     ". title title title title ."
+    ". . . . . ."
     ". ingredients . image image ."
     ". description description description description ."
     ;
@@ -14,10 +15,18 @@
 #main .title {
     grid-area: title;
     font-size: 3rem;
+    color: #685252;
+    font-family: sans-serif;
 }
 
 #main .image {
     grid-area: image;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#main .image img {
+    float: right;
     max-height: 100%;
     max-width: 100%;
 }

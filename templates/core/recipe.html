@@ -11,7 +11,7 @@
     <div class="description">
         {{ recipe.recipe_description }}
     </div>
-    <img class="image" src="{{ recipe.image.url }}">
+    <div class="image"><img src="{{ recipe.image.url }}"></div>
     <div class="ingredients">
         <div class="ingredient-title">
             Ingredients
@@ -19,7 +19,7 @@
         <div id="ingredient-list">
             {% for ingredient, name in ingredients %}
                 <div class="ingredient-element">
-                    {{ ingredient.value }} {{ name.unit_type }} {{ name.ingredient_name }}
+                    {{ ingredient.value|floatformat }} {{ name.unit_type }} {{ name.ingredient_name }}
                 </div>
             {% endfor %}
         </div>

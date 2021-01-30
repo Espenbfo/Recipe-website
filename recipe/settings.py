@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,13 +22,33 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ce@5u2-_a9av&-(5owt@#&3v#wr%c!^=p%fl!vk6te#-+-a-dd'
+#SECRET_KEY = 'ce@5u2-_a9av&-(5owt@#&3v#wr%c!^=p%fl!vk6te#-+-a-dd'
+with open("secret-key2.txt") as f:
+    SECRET_KEY = f.read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.2.31', "127.0.0.1"]
 
+with open("access-key.txt") as f:
+    AWS_ACCESS_KEY_ID = f.read()
+with open("secret-key.txt") as f:
+    AWS_SECRET_ACCESS_KEY = f.read()
+
+AWS_STORAGE_BUCKET_NAME = 'recipe-static'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE ="recipe.storage_backends.MediaStorage"
+
+MEDIA_ROOT= os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
 
 # Application definition
 
@@ -38,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     "recipe"
 ]
 
@@ -76,11 +98,29 @@ WSGI_APPLICATION = 'recipe.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+with open("passord.txt") as f:
+    passord = f.read()
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': "name",
+
+        'USER': 'postgres',
+
+        'PASSWORD': passord,
+
+        'HOST': "127.0.0.1",
+
+        'PORT': "5432",
+
     }
+    #,
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': BASE_DIR / 'db.sqlite3',
+    #}
 }
 
 
@@ -126,5 +166,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT= os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
+django_heroku.settings(locals())
