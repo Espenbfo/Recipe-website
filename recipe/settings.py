@@ -23,18 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'ce@5u2-_a9av&-(5owt@#&3v#wr%c!^=p%fl!vk6te#-+-a-dd'
-with open("secret-key2.txt") as f:
-    SECRET_KEY = f.read()
+SECRET_KEY = os.environ("secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['192.168.2.31', "127.0.0.1"]
 
-with open("access-key.txt") as f:
-    AWS_ACCESS_KEY_ID = f.read()
-with open("secret-key.txt") as f:
-    AWS_SECRET_ACCESS_KEY = f.read()
+AWS_ACCESS_KEY_ID = os.environ("access-key")
+
+AWS_SECRET_ACCESS_KEY = os.environ("secret-amazon-key")
 
 AWS_STORAGE_BUCKET_NAME = 'recipe-static'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -98,8 +96,7 @@ WSGI_APPLICATION = 'recipe.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-with open("passord.txt") as f:
-    passord = f.read()
+passord = os.environ("password")
 DATABASES = {
     'default': {
 
