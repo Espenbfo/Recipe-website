@@ -27,7 +27,7 @@ with open("secret-key2.txt") as f:
     SECRET_KEY = f.read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['192.168.2.31', "127.0.0.1"]
 
