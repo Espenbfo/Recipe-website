@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("secret-key","1")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.2.31', "127.0.0.1"]
+ALLOWED_HOSTS = ['192.168.2.31', "127.0.0.1", "recipe-espen.herokuapp.com"]
 
 AWS_ACCESS_KEY_ID = os.environ.get("access-key","1")
 
