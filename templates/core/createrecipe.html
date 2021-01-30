@@ -14,9 +14,12 @@
             <div class="input-container">
                 {{ form }}
             </div>
-
-
-                <button type="submit">submit</button>
+            <select name="category" id="select-category" required>
+                {% for category in categories %}
+                    <option value="">category</option>
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="right">
             <div id="ingredient-used">
@@ -35,6 +38,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="under">
+
+            <button type="submit">submit</button>
         </div>
     </div>
 </form>

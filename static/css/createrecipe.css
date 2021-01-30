@@ -22,10 +22,12 @@
 #split-view {
     display: grid;
     grid-template-columns: 1fr 1fr 40px 2fr 1fr;
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: 100px 1fr 30px 20px;
     grid-template-areas:
             ". title title title ."
-            ". left . right .";
+            ". left . right ."
+            ". . . . ."
+            ". under under under .";
 }
 
 #main .title {
@@ -40,10 +42,26 @@
     grid-area: left;
 }
 
+#split-view .left *{
+    width: 100%;
+}
+
+#split-view .left label{
+    display: none;
+}
+
 #split-view .right {
     grid-area: right;
 }
 
+#split-view .under {
+    grid-area: under;
+}
+
+#split-view .under button {
+    width: 100px;
+    height: 20px;
+}
 #split-view #ingredients input {
     width: 95%;
 }
@@ -138,3 +156,4 @@ input[type=number] {
 .item-2 * {
     width: 100%;
 }
+

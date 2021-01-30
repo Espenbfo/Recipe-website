@@ -36,9 +36,6 @@
         width: 30%;
     }
 
-    #footer {
-        font-size: 3rem!important;
-    }
 }
 
 @media (max-width: 1000px) {
@@ -51,6 +48,10 @@
 
     #main .item .title{
         line-height: 100px;
+    }
+
+    #footer {
+        font-size: 3rem!important;
     }
 }
 

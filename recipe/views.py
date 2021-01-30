@@ -122,6 +122,7 @@ def create_recipe(request):
         form = request.POST
 
         name = form["recipe_name"]
+        category = Category.objects.get(category_name=form["category"])
         description = form["recipe_description"]
         print(request.FILES)
         image = request.FILES["image"]
@@ -152,6 +153,7 @@ def create_recipe(request):
         print(image)
         r = Recipe.objects.create(recipe_name=name,
                                   recipe_description=description,
+                                  category=category,
                                   image=InMemoryUploadedFile(
                                       content_im,
                                       None,
@@ -180,6 +182,8 @@ def create_recipe(request):
         form = RecipeForm()
 
     ingredients = IngredientType.objects.order_by("ingredient_name")
+    categories = Category.objects.order_by("category_name")
     return render(request, "core\\createrecipe.html",
                   {"form": form,
-                   "ingredients": ingredients})
+                   "ingredients": ingredients,
+                   "categories": categories})
