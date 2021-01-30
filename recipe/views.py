@@ -43,6 +43,15 @@ def recipe_page(request, page):
 
     return render(request, "core\\recipes.html", {"recipes": recipes})
 
+def category_page(request, page):
+    categories = Category.objects.order_by("category_name")
+    page_number = page
+    print(page_number)
+    categories = Paginator(categories, 12).get_page(page_number)
+    print(categories)
+    return render(request, "core\\categories.html", {"categories": categories})
+
+
 
 def index(request):
     recipes = Recipe.objects.all()
@@ -63,6 +72,7 @@ def recipe(request, recipe_id):
     return render(request, "core/recipe.html", {"recipe": chosen_recipe,
                                                 "ingredients": chosen_ingredients,
                                                 "ingredient_names": ingredient_names})
+
 
 
 def ingredients(request):

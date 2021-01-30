@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import index, create_ingredient, create_recipe, ingredients, \
-    recipe, recipe_page, create_category
+    recipe, recipe_page, create_category, category_page
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,6 +27,7 @@ urlpatterns = [
     path('createcategory', create_category, name="create_category"),
     path('create', create_recipe, name="create_recipe"),
     path('ingredients', ingredients, name="ingredients"),
+    path('categories/<int:page>', category_page, name="category_page"),
     path('<int:page>', recipe_page, name="index"),
     path('', index, name="index"),
     path('admin/', admin.site.urls),

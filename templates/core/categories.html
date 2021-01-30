@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static "css/categories.css" %}">
+{% endblock %}
+
+{% block main %}
+    {% for category in categories %}
+        <a href="recipes/category/{{ category.id }}" class="item">
+            <div class="title">{{category.category_name}}</div>
+            <div class="image">
+            <img src="{{ category.category_image.url }}">
+                </div>
+        </a>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+    page:
+    {% if categories.has_previous %}
+        {% if categories.previous_page_number != 1  %}
+            <a href="/1">1</a>
+            ...
+        {% endif %}
+        <a href="/{{ categories.previous_page_number }}">{{ categories.previous_page_number }}</a>
+    {% endif %}
+    {{ categories.number }}
+    {% if categories.has_next %}
+        {% if categories.next_page_number != categories.paginator.num_pages  %}
+            <a href="/{{ categories.next_page_number }}">{{ categories.next_page_number }}</a>
+            ...
+        {% endif %}
+        <a href="/{{ categories.paginator.num_pages }}">{{ categories.paginator.num_pages }}</a>
+    {% endif %}
+{% endblock %}
