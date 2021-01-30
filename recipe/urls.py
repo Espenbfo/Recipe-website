@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index, create_ingredient, create_recipe, ingredients, recipe
+from .views import index, create_ingredient, create_recipe, ingredients, \
+    recipe, recipe_page
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +26,7 @@ urlpatterns = [
     path('createingredient', create_ingredient, name="create_ingredient"),
     path('create', create_recipe, name="create_recipe"),
     path('ingredients', ingredients, name="ingredients"),
+    path('<int:page>', recipe_page, name="index"),
     path('', index, name="index"),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

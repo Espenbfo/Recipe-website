@@ -12,18 +12,20 @@ from .models import IngredientForm, IngredientType, Ingredient, Recipe, \
     RecipeForm
 
 
-def index(request):
+def recipe_page(request,page):
     recipes = Recipe.objects.all()
-    page_number = 1
-    try:
-        page_number = request.GET.get('page')
-    except:
-        pass
+    page_number = page
     print(page_number)
     recipes = Paginator(recipes,12).get_page(page_number)
 
     return render(request, "core\\recipes.html", {"recipes": recipes})
 
+def index(request):
+    recipes = Recipe.objects.all()
+    page_number = 1
+    recipes = Paginator(recipes,12).get_page(page_number)
+
+    return render(request, "core\\recipes.html", {"recipes": recipes})
 
 def recipe(request, recipe_id):
     chosen_recipe = Recipe.objects.get(id=recipe_id)
