@@ -12,22 +12,17 @@
         {{ recipe.recipe_description }}
     </div>
     <img class="image" src="{{ recipe.image.url }}">
-    <div class="ingredients-right">
-        {% for ingredient in ingredients %}
-            <div class="item">
-            {{ ingredient.value }}
-            <hr>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="ingredients-left">
-        {% for ingredient_name in ingredient_names  %}
-            <div class="item">
-            {{ ingredient_name.ingredient_name }},
-            {{ ingredient_name.unit_type }}: 
-            <hr>
-            </div>
-        {% endfor %}
+    <div class="ingredients">
+        <div class="ingredient-title">
+            Ingredients
+        </div>
+        <div id="ingredient-list">
+            {% for ingredient, name in ingredients %}
+                <div class="ingredient-element">
+                    {{ ingredient.value }} {{ name.unit_type }} {{ name.ingredient_name }}
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}

@@ -79,8 +79,9 @@ def recipe(request, recipe_id):
 
     print(chosen_recipe.recipe_name)
     print(chosen_ingredients)
+    zipped = zip(chosen_ingredients,ingredient_names)
     return render(request, "core/recipe.html", {"recipe": chosen_recipe,
-                                                "ingredients": chosen_ingredients,
+                                                "ingredients": zipped,
                                                 "ingredient_names": ingredient_names})
 
 
@@ -145,6 +146,7 @@ def create_recipe(request):
         name = form["recipe_name"]
         category = Category.objects.get(category_name=form["category"])
         description = form["recipe_description"]
+        portions = int(form["portions"])
         print(request.FILES)
         image = request.FILES["image"]
         try:
@@ -175,6 +177,7 @@ def create_recipe(request):
         r = Recipe.objects.create(recipe_name=name,
                                   recipe_description=description,
                                   category=category,
+                                  portions=portions,
                                   image=InMemoryUploadedFile(
                                       content_im,
                                       None,
