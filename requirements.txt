@@ -4,3 +4,4 @@ django_heroku
 gunicorn
 psycopg2
 django-storages
+dj-database-url==0.2.1
