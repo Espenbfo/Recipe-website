@@ -12,6 +12,20 @@
     height: 100%;
 }
 
+@media (max-width: 1000px) {
+    .ingredient-title {
+        font-size:1.6em!important;
+    }
+
+    #ingredient-list {
+        font-size:1.1em!important;
+    }
+
+    .description {
+        font-size: 2em; !important;
+    }
+}
+
 #main .title {
     grid-area: title;
     font-size: 3rem;
@@ -43,6 +57,15 @@
 #main .description {
     grid-area: description;
     padding: 10px;
+}
+
+.description-title {
+    color: #685252;
+    border-bottom: 1px solid #685252;
+    padding: 5px;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1.3em;
 }
 
 #ingredient-list {
