@@ -42,7 +42,7 @@ def recipe_page(request, page):
     print(page_number)
     recipes = Paginator(recipes, 12).get_page(page_number)
 
-    return render(request, "core\\recipes.html", {"recipes": recipes})
+    return render(request, "core/recipes.html", {"recipes": recipes})
 
 def category_page(request, page):
     categories = Category.objects.order_by("category_name")
@@ -50,7 +50,7 @@ def category_page(request, page):
     print(page_number)
     categories = Paginator(categories, 12).get_page(page_number)
     print(categories)
-    return render(request, "core\\categories.html", {"categories": categories})
+    return render(request, "core/categories.html", {"categories": categories})
 
 
 def recipes_category_page(request, category_id, page):
@@ -59,7 +59,7 @@ def recipes_category_page(request, category_id, page):
     print(page_number)
     categories = Paginator(recipes, 12).get_page(page_number)
     print(categories)
-    return render(request, "core\\recipes.html", {"recipes": recipes})
+    return render(request, "core/recipes.html", {"recipes": recipes})
 
 
 
@@ -68,7 +68,7 @@ def index(request):
     page_number = 1
     recipes = Paginator(recipes, 12).get_page(page_number)
 
-    return render(request, "core\\recipes.html", {"recipes": recipes})
+    return render(request, "core/recipes.html", {"recipes": recipes})
 
 
 def recipe(request, recipe_id):
@@ -88,7 +88,7 @@ def recipe(request, recipe_id):
 
 def ingredients(request):
     ingredients = IngredientType.objects.all()
-    return render(request, "core\\ingredients.html",
+    return render(request, "core/ingredients.html",
                   {"ingredients": ingredients})
 
 
@@ -106,7 +106,7 @@ def create_ingredient(request):
     else:
         form = IngredientForm()
 
-    return render(request, "core\\createingredient.html", {"form": form})
+    return render(request, "core/createingredient.html", {"form": form})
 
 @staff_member_required
 def create_category(request):
@@ -130,7 +130,7 @@ def create_category(request):
     else:
         form = CategoryForm()
 
-    return render(request, "core\\createcategory.html", {"form": form})
+    return render(request, "core/createcategory.html", {"form": form})
 
 
 def handle_uploaded_file(f):
@@ -207,7 +207,7 @@ def create_recipe(request):
 
     ingredients = IngredientType.objects.order_by("ingredient_name")
     categories = Category.objects.order_by("category_name")
-    return render(request, "core\\createrecipe.html",
+    return render(request, "core/createrecipe.html",
                   {"form": form,
                    "ingredients": ingredients,
                    "categories": categories})
