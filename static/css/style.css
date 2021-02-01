@@ -55,7 +55,7 @@ body {
 
 @media all and (max-width: 1500px) and (min-width: 1000px) {
     body {
-        height: 125%!important;
+        grid-template-rows: 100px 50px 100px 850px 50px;
     }
 }
 #header {
