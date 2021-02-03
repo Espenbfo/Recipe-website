@@ -21,7 +21,7 @@ body {
         max-width: 100vw;
         min-width: 400px;
         grid-template-columns: 4fr 6fr 6fr 4fr;
-        grid-template-rows: 100px 150px 20px auto 100px;
+        grid-template-rows: fit-content(100px) fit-content(75px) 20px auto 100px;
         grid-template-areas: "header header header header" "left-area left-area left-area left-area" ". . . ." "main main main main" "footer footer footer footer"
     }
 
@@ -45,7 +45,8 @@ body {
     }
 
     #header {
-        font-size: 8vw !important;
+        font-size: 16vw !important;
+        margin-bottom: 40px;
     }
 
     #sidebar {
